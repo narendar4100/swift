@@ -1,129 +1,160 @@
-import Foundation 
+import Foundation
 
-func greet(){
-    print("greetings..")
-    
+print("Hello World")
+
+
+var str = "Hello, playground"
+
+var snackItems = [String]()
+var items = ["Tornado potato", "shaved Ice","Donuts","Ice cream","French Fries"]
+var snacks :[String]
+snacks = ["Tornado potato", "shaved Ice","Donuts","Ice cream","French Fries"]
+
+print("Snacks:\(snacks)")
+
+for snack in snacks{
+    print("each day :\(snack)")
+}
+for snack in 0..<snacks.count{
+     print("each day :\(snacks[snack])")
 }
 
-greet()
-func greet(message: String){
-    print("\(message)")
+for snack in snacks [2...]{
+    print("new day one sided range: \(snack)")
 }
 
-greet(message:"good afternoon")
-
-func add(n1:Int, n2:Int){
-    print("\(n1)+\(n2)= \(n1+n2)")
-}
-add(n1:20,n2:3)
-
-func add(_ n1:Int, _ n2:Int) ->Int{
-    return(n1+n2)
-}
-var sum = add(2, 3)
-print("sum = \(sum)")
-
-func swap(j:Int, k: Int) -> (Int, Int){
-    // function arguments are let constant by default
-    // var tem = j
-    // j= k
-    // k= temp
-    return(k,j)
-}
-var (a,b) = swap(j:2,k:4)
-print("a= \(a) b=\(b)")
-
-func swap(j: inout Int, k: inout Int){
-    var temp = j
-    j = k
-    k = temp
-}
-(a,b) = swap(j: 12 , k:14)
-print("a = \(a) b= \(b)")
-
-var n1 = 10 , n2 = 20
-swap (&n1, &n2)
-print("n1 = \(n1) n2 = \(n2)")
-
-func SI(amount : Double , years : Double=2.5, rate: Double=2.3)-> Double{
-    return((amount*years*rate)/100)
-}
-print("deposit 1: \(SI(amount:1000.23, years :2, rate :5.2))")
-
-print("deposit 2: \(SI(amount: 1000.56, years:3))")
-
-print("deposit 3: \(SI(amount: 2000))")
-
-// variadic arguments
-func wishes(wishList: String...){
-    for eachWish in wishList{
-        print("\(eachWish)")
-    }
+for snack in snacks [...2]{
+    print("new day one sided range: \(snack)")
 }
 
-wishes(wishList: "Happy Birthday","wymmhrotd", "party", "patandara")
-
-wishes(wishList : " lkdmdf"," dkljfl;k", "dkfjas;l")
-
-func addArray(arrays: [Int]...) -> [Int]{
-    var a = arrays.count
-    print( " a = \(a)")
-
-    var array1 = arrays[0]
-    var array2 = arrays[1]
-
-    var sumArray = [Int] ()
-
-    if array1.count == array2.count{
-        for itr in 0..<array1.count{
-            sumArray.append(array1[itr] + 
-            array2[itr]) 
-        }
-    }
-
-    return sumArray
+for ( index, value) in snacks.enumerated(){
+    print("index : \(index)vlaue: \(value)")
 }
-var ar1 = [1,2,3,4,5]
-var ar2 = [4,5,6,7,7]
-var result = addArray(arrays: ar1, ar2)
-print("result : \(result)")
+var numbers = Array(repeating: 1, count: 5)
+print("numbers: \(numbers)")
 
-func mul(_ n1:Int, _ n2:Int) ->Int{
-    return(n1*n2)
+numbers[2] = 25
+print("number : \(numbers)")
+
+var morenumbers = Array(repeating: 0 , count:4)
+print("morenumber: \(morenumbers)")
+morenumbers[3] = 34
+morenumbers[2] = 2
+var allnumbers = numbers + morenumbers
+
+allnumbers[5] = 100
+print("allnumbers :\(allnumbers)")
+
+var grocery = ["pringles", "juice"]
+grocery += ["fruits","chocolates"]
+grocery += ["Tomatoes"]
+grocery.append("rice")
+print("grocery: \(grocery)")
+
+for item in grocery{
+    print("one by one :\(item)")
 }
+grocery[1...3] = ["milk","veggies","potato","dkld","kdkl"]
+print("grocery: \(grocery)")
 
+grocery.insert("Ice cream", at: 1) 
+print("grocery: \(grocery)")
 
-// func as a type
-var someOper: (Int, Int) -> Int = mul 
-print(" multiplication : \(someOper(2,5))")
+grocery.remove(at:7)
+print("grocery:\(grocery)")
+grocery.removeAll()
 
-someOper = add 
-print("addition : \(someOper(2,5))")
-
-//  someOper = sub
-
-// function as a parameter
-func mathOper(someFunc : (Int, Int) -> Int, n1: Int, n2:Int){
-    print("math operation : \(someFunc(n1,n2))")
-
+if grocery.isEmpty{
+    print("put everything in kitchen")
+}else{
+    print("go back to the market")
 }
 
-mathOper(someFunc : mul, n1 : 2 , n2 : 3)
-mathOper(someFunc : add, n1:3 , n2:4)
+var rajinikanth = [Any]()
+rajinikanth.append("Robot")
+rajinikanth.append(2.0)
+rajinikanth.append(1)
+print("rajinikanth:\(rajinikanth)")
 
-func increase(_ input :Int) -> Int{
-return(input + 1)
+var languages = Set<String>()
+languages.insert("Gujarati")
+languages.insert("panjabi")
+languages.insert("English")
+languages.insert("Telugu")
+languages.insert("Sanskrit")
+print("languages: \(languages)")
+
+languages.remove("Sanskrit")
+print("Telugu is available in class: \(languages.contains("Telugu"))")
+print("sanskrit is available in class: \(languages.contains("Sanskrit"))")
+
+for lang in languages.sorted(){
+    print("language: \(lang)")
+}
+let motherToung : Set = ["Telugu","panjabi","Urdu","Hindi","Telugu"]
+print("mothertoung : \(motherToung)")
+
+print("Union :\(languages.union(motherToung).sorted())")
+print("Union :\(languages.intersection(motherToung).sorted())")
+
+print("symmetric difference : \(languages.symmetricDifference(motherToung).sorted())")
+print("symmetric difference 1-2: \(languages.subtracting(motherToung).sorted())")
+print("symmetric difference 2-1: \(motherToung.subtracting(languages).sorted())")
+
+var commonLangs = languages.intersection(motherToung).sorted()
+print("commonlangs: \(commonLangs)")
+print(languages.isSubset(of: commonLangs))
+print(languages.isSuperset(of: commonLangs))
+print(motherToung.isDisjoint(with: languages))
+
+//dictionary
+
+var appreciation = [String : String]()
+appreciation["Day 1"] = "potato Tornoado"
+appreciation["day 3"] = "Donuts"
+print("appreiciation : \(appreciation)")
+
+print(" \(appreciation.count) appreciation days")
+
+// appreciation = [:]
+if appreciation.isEmpty{
+    print("NO appreciation 😃😃...just stides")
 }
 
-func decrease(_ input:Int) -> Int{
-return(input - 1)
+appreciation["Day 2"] = "shaved ice"
+print("appreiciation : \(appreciation)")
+
+let oldItem = appreciation.updateValue("Gola", forKey: "Day 2")
+print("appreiciation : \(appreciation)")
+print("oldItem: \(oldItem)")
+if let day4Item = appreciation["Day 4"]{
+print("day4item :\(day4Item)")
+}else{
+    print("Nothing for day 4")
 }
-func counting(flag: Bool)-> (Int) -> Int {
-    return flag ? increase : decrease
+appreciation["Day 4"] = "Ice Cream"
+
+if let removedValue = appreciation.removeValue(forKey: "Day3:"){
+    print("\(removedValue) are not longer available")
+    print("appreciation : \(appreciation)")
+}else {
+    print("nothing found for day4")
 }
 
- var countFunc = counting(flag: true)
- print("\(countFunc(3))")
+appreciation["Day 2"] = nil
+print("appreciation : \(appreciation)")
+for app in appreciation.keys{
+    print("app key : \(app)")
+}
+for app in appreciation.values{
+    print("app values :\(app)")
+}
+for(key, value) in appreciation{
+    print("key : \(key) value: \(value)")
+}
 
- countFunc = counting(flag : false)
- print ("\(countFunc(3))")
+var flight = [String : AnyObject]()
+flight["number"] = "9w 234" as AnyObject
+flight["Duration"] = 16 as AnyObject
+flight["cost"] = 1000.39 as AnyObject
+print(" flight : \(flight)")
